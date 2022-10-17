@@ -1,21 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { capitalizeFirstLetter } from "../../utils/helpers";
 
-function Nav() {
-  const [categories] = useState([
-    {
-      name: "projects",
-      description: "Photos of projects",
-    },
-    { name: "portraits", description: "Portraits of people in my life" },
-    { name: "food", description: "Delicious delicacies" },
-    {
-      name: "landscape",
-      description: "Fields, farmhouses, waterfalls, and the beauty of nature",
-    },
-  ]);
-
-  const [currentCategory, setCurrentCategory] = useState(categories[0]);
+function Nav(props) {
+  const { categories = [], setCurrentCategory, currentCategory } = props;
 
   return (
     <header className="flex-row px-1">

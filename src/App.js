@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Nav from "./components/Nav";
 import About from "./components/About";
 import Gallery from "./components/Gallery";
@@ -6,11 +6,29 @@ import Gallery from "./components/Gallery";
 import "./App.css";
 
 function App() {
+  const [categories] = useState([
+    {
+      name: "projects",
+      description: "Photos of projects",
+    },
+    { name: "portraits", description: "Portraits of people in my life" },
+    { name: "food", description: "Delicious delicacies" },
+    {
+      name: "landscape",
+      description: "Fields, farmhouses, waterfalls, and the beauty of nature",
+    },
+  ]);
+  const [currentCategory, setCurrentCategory] = useState(categories[0]);
+
   return (
     <div>
-      <Nav></Nav>
+      <Nav
+        categories={categories}
+        setCurrentCategory={setCurrentCategory}
+        currentCategory={currentCategory}
+      ></Nav>
       <main>
-        <Gallery></Gallery>
+        <Gallery currentCategory={currentCategory}></Gallery>
         <About></About>
       </main>
     </div>
